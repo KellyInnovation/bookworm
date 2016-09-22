@@ -1,0 +1,37 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+	<h2>New Bookcase</h2>
+
+	<form action="" method="POST">
+		{% csrf_token %}
+		<div 
+			{% if form.name.errors %}
+			    class="form-group has-error"
+			{% else %}
+			    class="form-group"
+			{% endif %}				
+		>
+			{{form.name.label_tag}}
+			{{form.name}}
+			
+			{% if form.name.errors %}
+			    <span class="help-block">
+			    	{% for error in form.name.errors %}
+			    		{{error}}
+			    	{% endfor %}
+			    </span>
+			
+			{% endif %}
+
+		</div>
+		<div class="form-group">
+			{{form.description.label_tag}}
+			{{form.description}}
+			
+		</div>
+		<button type="submit" class="btn btn-primary btn-block btn-lg">
+			Save
+		</button>
+	</form>
+{% endblock content %}
