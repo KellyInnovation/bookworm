@@ -1,0 +1,29 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <h2>
+    	{{ bookshelf.shelf_label }}
+    	<hr>
+    </h2>
+	<p>
+		<em>
+			There {{bookshelf.book_count|pluralize:"is,are"}} {{bookshelf.book_count}} book{{bookshelf.book_count|pluralize}} on this shelf.
+		</em>
+	</p>
+
+    {% if books %}
+        
+        <h3>
+        	Books
+        </h3>
+        <hr>
+        <div class="row">
+        	{% for book in books %}
+        		<div class="col-md-4">
+        			{% include "books/_book_thumbnail.html" %}
+        		</div>
+        	{% endfor %}
+        </div>
+    
+    {% endif %}
+{% endblock content %}

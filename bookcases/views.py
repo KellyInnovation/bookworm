@@ -9,7 +9,7 @@ def bookcase_list(request):
 	bookcases = Bookcase.objects.annotate(shelf_count=Count('bookshelf')).all()
 
 	breadcrumbs = (
-		("Bookcases", ),
+		("Bookcases",),
 	)
 
 	context = {
@@ -23,8 +23,8 @@ def bookcase_detail(request, id):
 	bookshelves = bookcase.bookshelf_set.annotate(book_count=Count('book')).all()
 
 	breadcrumbs = (
-		("Bookcases", reverse("bookcases:bookcase_list"), ),
-		(bookcase.name, ),
+		("Bookcases", reverse("bookcases:bookcase_list"),),
+		(bookcase.name,),
 	)
 
 	context = {
@@ -42,9 +42,9 @@ def bookshelf_detail(request, id):
 	books = bookshelf.book_set.prefetch_related('authors').all()
 
 	breadcrumbs = (
-		("Bookcases", reverse("bookcases:bookcase_list"), ),
+		("Bookcases", reverse("bookcases:bookcase_list"),),
 		(bookshelf.bookcase.name, reverse("bookcases:bookcase_detail", args=[bookshelf.bookcase.pk])),
-		(bookshelf.shelf_label, ),
+		(bookshelf.shelf_label,),
 	)
 
 	context = {

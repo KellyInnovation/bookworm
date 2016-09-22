@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <div class="row">
+    	<div class="col-md-4 book-detail-cover">
+    		<img class="img-responsive book-cover" src="http://covers.openlibrary.org/b/isbn/9780385533225-L.jpg" alt="Book Cover">
+    	</div>
+    	<div class="col-md-8">
+    		<h2>
+		    	{{book.title}}
+		    </h2>
+			<p>
+		    	<small><em>{{book.get_author_names}}</em></small>
+		    </p>
+		    <p>
+		    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis deleniti perferendis ipsam nisi deserunt magni, facere obcaecati delectus optio laboriosam inventore earum. Labore magni quis dicta, tempore ipsum temporibus sed!
+		    </p>
+    	</div>
+    </div>
+    
+{% endblock content %}

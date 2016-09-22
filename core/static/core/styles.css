@@ -13,3 +13,7 @@ body {
 .jumbotron-index {
 	text-align: center;
 }
+
+.book-cover {
+	margin: 0 auto;
+}
