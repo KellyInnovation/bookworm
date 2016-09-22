@@ -14,6 +14,10 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+    def get_author_names(self):
+        author_names = [author.name for author in self.authors.all()]
+        return ", ".join(author_names)
+
 class Author(models.Model):
     name = models.CharField(max_length=200)
 

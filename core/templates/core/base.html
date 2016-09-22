@@ -28,6 +28,23 @@
         </nav>
     </header>
     <div class="container">
+        {% if breadcrumbs %}
+            <ol class="breadcrumb">
+                <li><a href="{% url 'core:index' %}">Home</a></li>
+                {% for breadcrumb in breadcrumbs %}
+                    <li>
+                        {% if breadcrumb.1 %}
+                            <a href="{{breadcrumb.1}}">                       
+                        {% endif %}
+                        {{breadcrumb.0}}
+                        {% if breadcrumb.1 %}
+                            </a>                       
+                        {% endif %}
+                        </li>
+                    <li><a href="#"></a></li>
+                {% endfor %}                
+            </ol>
+        {% endif %}
         {% block content %}
 
         {% endblock %}

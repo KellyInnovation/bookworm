@@ -1,5 +1,30 @@
 {% extends "core/base.html" %}
 
 {% block content %}
-    <h2>{{bookcase.name}}</h2>
+    <h2>
+    	{bookcase.name}}
+		<hr>
+	</h2>
+	<p class="lead">
+		{{bookcase.description}}
+	</p>
+	
+	{% if bookshelves %}	
+	    <ul class="list-group">
+	    	{% for bookshelf in bookshelves %}
+	    		<li class="list-group-item">
+	    			<div class="pull-right">
+	    				<span class="badge">
+	    					{{bookshelf.book_count}}
+	    					book{{bookshelf.book_count|pluralize}}
+	    				</span>
+	    			</div>
+	    			<a href="{{bookshelf.get_absolute_url}}">{{bookshelf.shelf_label}}
+	    			</a>	    			
+	    		</li>
+	    	{% endfor %}
+	    </ul>
+    {% else %}
+        <p>No Bokshelves for this bookcase</p>
+	{% endif %}
 {% endblock content %}
