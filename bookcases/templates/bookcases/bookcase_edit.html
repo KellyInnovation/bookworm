@@ -9,31 +9,10 @@
 
 	<form action="" method="POST">
 		{% csrf_token %}
-		<div 
-			{% if form.name.errors %}
-			    class="form-group has-error"
-			{% else %}
-			    class="form-group"
-			{% endif %}				
-		>
-			{{form.name.label_tag}}
-			{{form.name}}
-			
-			{% if form.name.errors %}
-			    <span class="help-block">
-			    	{% for error in form.name.errors %}
-			    		{{error}}
-			    	{% endfor %}
-			    </span>
-			
-			{% endif %}
+		{% for field in form %}
+			{% include "core/_form_input.html" %}
+		{% endfor %}
 
-		</div>
-		<div class="form-group">
-			{{form.description.label_tag}}
-			{{form.description}}
-			
-		</div>
 		<button type="submit" class="btn btn-primary btn-block btn-lg">
 			Save
 		</button>
