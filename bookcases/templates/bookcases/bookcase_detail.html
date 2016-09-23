@@ -32,4 +32,10 @@
     {% else %}
         <p>No Bokshelves for this bookcase</p>
 	{% endif %}
+	<a 
+		class="btn btn-primary btn-block btn-lg"
+		href="{% url 'bookcases:bookshelf_new' bookcase.pk %} "
+	>
+		Add a bookshelf
+	</a>
 {% endblock content %}
