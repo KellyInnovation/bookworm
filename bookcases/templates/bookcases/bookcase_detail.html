@@ -2,6 +2,11 @@
 
 {% block content %}
     <h2>
+    	<div class="pull-right">
+    		<a href="{% url 'bookcases:bookcase_edit' bookcase.pk %} ">
+    			edit
+    		</a>
+    	</div>
     	{{bookcase.name}}
 		<hr>
 	</h2>

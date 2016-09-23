@@ -20,6 +20,41 @@ def bookcase_list(request):
 	}
 	return render(request, "bookcases/bookcase_list.html", context)
 
+def bookcase_new(request):
+	if request.method == "POST":
+		form = BookcaseForm(request.POST)
+		if form.is_valid():
+			bookcase = form.save()
+			message.success(request, "Bookcase created!")
+			return redirect("bookcases:bookcase_detail", id=bookcase.pk)
+	else:
+		form = BookcaseForm()
+
+	context = {
+		"form": form,
+	}
+
+	return render(request, "bookcases/bookcase_edit.html", context)
+
+
+def bookcase_edit(request, id):
+	bookcase = get_object_or_404(Bookcase, pk=id)
+
+	if request.method == "POST":
+		form = BookcaseForm(request.POST, instance=bookcase)
+		if form.is_valid():
+			bookcase = form.save()
+			message.success(request, "Bookcase updated!")
+			return redirect("bookcases:bookcase_detail", id=bookcase.pk)
+	else:
+		form = BookcaseForm(instance=bookcase)
+
+	context = {
+		"form": form,
+		"bookcase": bookcase,
+	}
+
+	return render(request, "bookcases/bookcase_edit.html", context)
 
 def bookcase_detail(request, id):
 	bookcase = get_object_or_404(Bookcase, pk=id)
@@ -38,21 +73,6 @@ def bookcase_detail(request, id):
 
 	return render(request, "bookcases/bookcase_detail.html", context)
 
-def bookcase_new(request):
-	if request.method == "POST":
-		form = BookcaseForm(request.POST)
-		if form.is_valid():
-			bookcase = form.save()
-			message.success(request, "Bookcase created!")
-			return redirect("bookcases:bookcase_detail", id=bookcase.pk)
-	else:
-		form = BookcaseForm()
-
-	context = {
-		"form": form,
-	}
-
-	return render(request, "bookcases/bookcase_edit.html", context)
 
 def bookshelf_detail(request, id):
 	query_set = Bookshelf.objects.annotate(book_count=Count('book'))

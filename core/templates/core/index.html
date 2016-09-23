@@ -1,9 +1,10 @@
 {% extends "core/base.html" %}
 
+{% block content_classes %}
+    {{block.super}} index-content
+{% endblock content_classes %}
+
 {% block content %}
-	<div class="jumbotron jumbotron-index">
-		<h1>Bookworm</h1>
-	</div>
 	<ul class="list-group">
 		<li class="list-group-item">
 			<a href="{% url 'bookcases:bookcase_list' %}">
