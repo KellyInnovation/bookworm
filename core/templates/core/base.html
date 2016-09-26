@@ -32,6 +32,7 @@
                     <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
                 {% else %}
                     <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                    <li><a href="{% url 'accounts:register' %}">Sign Up</a></li>
                 {% endif %}
             </div>
             <form class="navbar-form navbar-right" action="{% url 'books:book_list' %}">
