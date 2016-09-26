@@ -13,7 +13,6 @@
 		{% for field in form %}
 			{% include "core/_form_input.html" %}
 		{% endfor %}
-		{{form}}
 
 		<input type="hidden" name="next" value="{{next}}">
 		<button class="btn btn-primary" type="submit">Login</button>
