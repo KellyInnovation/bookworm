@@ -2,9 +2,17 @@
 
 {% block content %}
 	<h2>Login</h2>
+	{% if forms.errors %}
+	    <div class="alert alert-danger">
+	    	Incorrect username or password.
+	    </div>	
+	{% endif %}
 
 	<form action="{% url 'accounts:login' %}" method="POST">
 		{% csrf_token %}
+		{% for field in form %}
+			{% include "core/_form_input.html" %}
+		{% endfor %}
 		{{form}}
 
 		<input type="hidden" name="next" value="{{next}}">
