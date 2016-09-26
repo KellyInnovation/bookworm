@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+	<h2>Login</h2>
+
+	<form action="{% url 'accounts:login' %}" method="POST">
+		{% csrf_token %}
+		{{form}}
+
+		<input type="hidden" name="next" value="{{next}}">
+		<button class="btn btn-primary" type="submit">Login</button>
+	</form>
+{% endblock content %}

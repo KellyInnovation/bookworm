@@ -27,6 +27,18 @@
                     <i class="fa fa-book" aria-hidden="true"></i>Bookworm
                 </a>
             </div>
+            <div class="nav navbar-nav navbar-right">
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                {% endif %}
+            </div>
+            <form class="navbar-form navbar-right" action="{% url 'books:book_list' %}">
+                <label for="index-search" class="sr-only">Search books</label>
+                <input type="text" id="index-search" class="form-control" name="q" placeholder="Find a book">    
+                <button type="submit" class="btn btn-info">Submit</button>
+            </form>
           </div>
         </nav>
     </header>

@@ -5,10 +5,21 @@
 {% endblock content_classes %}
 
 {% block content %}
+	<form action="{% url 'books:book_list' %}">
+		<label for="index-search" class="sr-only">Search books</label>
+		<input type="text" class="form-control input-lg" name="q" placeholder="Find a book">	
+		<button type="submit" class="sr-only">Submit</button>
+	</form>
+
 	<ul class="list-group">
 		<li class="list-group-item">
 			<a href="{% url 'bookcases:bookcase_list' %}">
 				View Bookcases
+			</a>
+		</li>
+		<li class="list-group-item">
+			<a href="{% url 'books:book_list' %}">
+				View Books
 			</a>
 		</li>
 	</ul>
