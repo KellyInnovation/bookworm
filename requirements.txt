@@ -1,5 +1,9 @@
+dj-database-url==0.4.1
 Django==1.8.14
 django-debug-toolbar==1.5
 django-extensions==1.7.4
+gunicorn==19.6.0
 six==1.10.0
 sqlparse==0.2.1
+whitenoise==3.2.2
+psycopg2==2.5.4

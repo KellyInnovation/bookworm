@@ -42,13 +42,12 @@
                             <li><a href="{% url 'accounts:register' %}">Sign Up</a></li>
                             <li><p class="navbar-text navbar-right">Signed in as {{request.user.username}}</p></li>
                         {% endif %}
-                    </ul>
-                </div>
-                
-                <div class="navbar-form navbar-right" action="{% url 'books:book_list' %}">
-                    <label for="index-search" class="sr-only">Search books</label>
-                    <input type="text" id="index-search" class="form-control" name="q" placeholder="Find a book">    
-                    <button type="submit" class="btn btn-info">Submit</button>
+                    </ul> 
+                    <form class="navbar-form navbar-right" action="{% url 'books:book_list' %}">
+                        <label for="index-search" class="sr-only">Search books</label>
+                        <input type="text" id="index-search" class="form-control" name="q" placeholder="Find a book">    
+                        <button type="submit" class="btn btn-info">Submit</button>
+                    </form>
                 </div>
             </div>
         </nav>
